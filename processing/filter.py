@@ -23,3 +23,11 @@ def simple_weighted_filter(data):
 
     return filtered_data
 
+
+def exponential_moving_filter(data, alpha):
+
+    filtered_data = data.copy()
+
+    filtered_data["filtered_signal"]  = (filtered_data["noisy_signal"].ewm(alpha = alpha)).mean()
+
+    return filtered_data
